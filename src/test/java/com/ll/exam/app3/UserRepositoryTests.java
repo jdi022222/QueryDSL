@@ -3,6 +3,7 @@ package com.ll.exam.app3;
 
 import com.ll.exam.app3.user.entity.SiteUser;
 import com.ll.exam.app3.user.repository.UserRepository;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,33 @@ class UserRepositoryTests {
     @Autowired
     private UserRepository userRepository;
 
-    @Test
-    @DisplayName("회원 생성")
-    void t1() {
-        SiteUser u1 = new SiteUser(null, "user1", "{noop}1234", "user1@test.com");
-        SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
+    @BeforeEach
+    void beforeEach(){
+        userRepository.truncate();
+        SiteUser u1 = SiteUser.builder()
+                .username("user1")
+                .password("{noop}1234")
+                .email("user1@test.com")
+                .build();
+
+        SiteUser u2 = SiteUser.builder()
+                .username("user2")
+                .password("{noop}1234")
+                .email("user2@test.com")
+                .build();
+        // SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
 
         userRepository.saveAll(Arrays.asList(u1, u2));
     }
+
+//    @Test
+//    @DisplayName("회원 생성")
+//    void t1() {
+//        SiteUser u1 = new SiteUser(null, "user1", "{noop}1234", "user1@test.com");
+//        SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
+//
+//        userRepository.saveAll(Arrays.asList(u1, u2));
+//    }
 
     @Test
     @DisplayName("1번 회원 찾기")
