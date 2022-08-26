@@ -2,6 +2,7 @@ package com.ll.exam.app3.user.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.persistence.*;
 @Entity
 @Setter
 @Getter
+@NoArgsConstructor
 @AllArgsConstructor
 public class SiteUser {
     @Id
@@ -22,8 +24,4 @@ public class SiteUser {
 
     @Column(unique = true)
     private String email;
-
-    public SiteUser() {
-
-    }
 }
