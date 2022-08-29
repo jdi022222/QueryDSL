@@ -9,34 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
+import javax.transaction.Transactional;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
+@Transactional
+// 클래스에 @Tran을 붙이면 클래스의 각 테스트 케이스에 전부 @Tran이 붙은 것과 동일
+// @Test + @Trsn 조합은 롤백 모드 활성화화@ActiveProfiles("test") // 테스트 모드 활성화
 @ActiveProfiles("test") // 테스트 모드 활성화
 class UserRepositoryTests {
     @Autowired
     private UserRepository userRepository;
-
-//    @BeforeEach
-//    void beforeEach(){
-//        userRepository.truncate();
-//        SiteUser u1 = SiteUser.builder()
-//                .username("user1")
-//                .password("{noop}1234")
-//                .email("user1@test.com")
-//                .build();
-//
-//        SiteUser u2 = SiteUser.builder()
-//                .username("user2")
-//                .password("{noop}1234")
-//                .email("user2@test.com")
-//                .build();
-//        // SiteUser u2 = new SiteUser(null, "user2", "{noop}1234", "user2@test.com");
-//
-//        userRepository.saveAll(Arrays.asList(u1, u2));
-//    }
 
     @Test
     @DisplayName("회원 생성")
@@ -57,13 +42,29 @@ class UserRepositoryTests {
     }
 
     @Test
-    @DisplayName("1번 회원 찾기")
+    @DisplayName("1번 회원을 Qsl로 가져오기")
     void t2() {
         SiteUser u1 = userRepository.getQslUser(1L);
-
         assertThat(u1.getId()).isEqualTo(1L);
         assertThat(u1.getUsername()).isEqualTo("user1");
-        assertThat(u1.getPassword()).isEqualTo("{noop}1234");
         assertThat(u1.getEmail()).isEqualTo("user1@test.com");
+        assertThat(u1.getPassword()).isEqualTo("{noop}1234");
+    }
+//    @Test
+//    @DisplayName("2번 회원을 Qsl로 가져오기")
+//    void t3() {
+//        SiteUser u2 = userRepository.getQslUser(2L);
+//        assertThat(u2.getId()).isEqualTo(2L);
+//        assertThat(u2.getUsername()).isEqualTo("user2");
+//        assertThat(u2.getEmail()).isEqualTo("user2@test.com");
+//        assertThat(u2.getPassword()).isEqualTo("{noop}1234");
+//    }
+
+    @Test
+    @DisplayName("모든 회원의 수")
+    void t4() {
+        int count = userRepository.getQslCount();
+
+        assertThat(count).isGreaterThan(0);
     }
 }
