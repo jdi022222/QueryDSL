@@ -1,4 +1,4 @@
-package com.ll.exam.app3.base;
+package com.ll.exam.qsl.base;
 
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Bean;

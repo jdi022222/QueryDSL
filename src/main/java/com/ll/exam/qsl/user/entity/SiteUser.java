@@ -1,4 +1,4 @@
-package com.ll.exam.app3.user.entity;
+package com.ll.exam.qsl.user.entity;
 
 import lombok.*;
 

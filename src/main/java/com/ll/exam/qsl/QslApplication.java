@@ -1,4 +1,4 @@
-package com.ll.exam.app3;
+package com.ll.exam.qsl;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

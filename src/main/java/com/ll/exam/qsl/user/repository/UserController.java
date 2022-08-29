@@ -1,6 +1,6 @@
-package com.ll.exam.app3.user.repository;
+package com.ll.exam.qsl.user.repository;
 
-import com.ll.exam.app3.user.entity.SiteUser;
+import com.ll.exam.qsl.user.entity.SiteUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

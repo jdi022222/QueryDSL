@@ -1,9 +1,8 @@
-package com.ll.exam.app3;
+package com.ll.exam.qsl;
 
 
-import com.ll.exam.app3.user.entity.SiteUser;
-import com.ll.exam.app3.user.repository.UserRepository;
-import org.junit.jupiter.api.BeforeEach;
+import com.ll.exam.qsl.user.entity.SiteUser;
+import com.ll.exam.qsl.user.repository.UserRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

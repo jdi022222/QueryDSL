@@ -1,6 +1,6 @@
-package com.ll.exam.app3.user.repository;
+package com.ll.exam.qsl.user.repository;
 
-import com.ll.exam.app3.user.entity.SiteUser;
+import com.ll.exam.qsl.user.entity.SiteUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

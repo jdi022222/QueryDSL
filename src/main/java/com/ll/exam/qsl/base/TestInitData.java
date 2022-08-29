@@ -1,7 +1,7 @@
-package com.ll.exam.app3.base;
+package com.ll.exam.qsl.base;
 
-import com.ll.exam.app3.user.entity.SiteUser;
-import com.ll.exam.app3.user.repository.UserRepository;
+import com.ll.exam.qsl.user.entity.SiteUser;
+import com.ll.exam.qsl.user.repository.UserRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
