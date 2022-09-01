@@ -98,4 +98,9 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
 
         return PageableExecutionUtils.getPage(users, pageable, usersCountQuery::fetchOne);
     }
+
+    @Override
+    public List<SiteUser> getQslUsersByInterestKeyword(String 축구) {
+        return null;
+    }
 }

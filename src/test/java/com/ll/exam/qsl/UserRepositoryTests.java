@@ -162,4 +162,19 @@ class UserRepositoryTests {
 
         userRepository.save(u2);
     }
+
+    @Test
+    @DisplayName("축구에 관심이 있는 회원들 검색")
+    void t11() {
+        List<SiteUser> users = userRepository.getQslUsersByInterestKeyword("축구");
+
+        assertThat(users.size()).isEqualTo(1);
+
+        SiteUser u = users.get(0);
+
+        assertThat(u.getId()).isEqualTo(1L);
+        assertThat(u.getUsername()).isEqualTo("user1");
+        assertThat(u.getEmail()).isEqualTo("user1@test.com");
+        assertThat(u.getPassword()).isEqualTo("{noop}1234");
+    }
 }
