@@ -1,5 +1,6 @@
 package com.ll.exam.qsl.user.repository;
 
+import com.ll.exam.qsl.interestKeyword.entity.QInterestKeyword;
 import com.ll.exam.qsl.user.entity.SiteUser;
 import com.querydsl.core.types.Order;
 import com.querydsl.core.types.OrderSpecifier;
@@ -110,9 +111,14 @@ public class UserRepositoryImpl implements UserRepositoryCustom {
        ON IK.content = SUIK.interest_keywords_content
        WHERE IK.content = "축구";
        */
+
+        QInterestKeyword IK = new QInterestKeyword("IK");
         return jpaQueryFactory
                 .selectFrom(siteUser)
-                .innerJoin(siteUser.interestKeywords)
+                .innerJoin(siteUser.interestKeywords, IK)
+                .where(
+                        IK.content.eq(keywordContent)
+                )
                 .fetch();
     }
 }
